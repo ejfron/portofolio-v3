@@ -144,7 +144,7 @@ const handleSubmit = async () => {
 
             <!-- Status -->
             <p v-if="sendError" class="form-status form-status--error">{{ sendError }}</p>
-            <p v-else-if="sent" class="form-status form-status--ok">Sent — talk soon.</p>
+            <p v-else-if="sent" class="form-status form-status--ok">Message sent!</p>
 
             <!-- Action Buttons -->
             <div class="form-actions">
