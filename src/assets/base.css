@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap');
+
+:root {
+  /* Ledger paper — cool, slightly green-cast stock, not cream */
+  --paper: #e7e9e8;
+  --paper-raised: #f2f3f2;
+  --paper-sunk: #dcdfdd;
+
+  --ink: #16191b;
+  --ink-soft: #545b58;
+  --ink-faint: #838a87;
+
+  /* Ruling: hairlines carry the structure, so two weights */
+  --rule: #cbcfcd;
+  --rule-strong: #a8ada9;
+
+  /* Indigo stamp — links, active state, section marks */
+  --stamp: #27437f;
+    --moon: #27437f;
+  --stamp-deep: #1b2f5c;
+  --stamp-wash: rgba(39, 67, 127, 0.08);
+
+  /* Ochre — reserved for "live / in use" status only */
+  --live: #b8801f;
+
+  --font-display: 'Bricolage Grotesque', 'Archivo', system-ui, sans-serif;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --sidebar-width: 236px;
+  --gutter: 2.75rem;
+  --measure: 62ch;
+
+  /* Legacy aliases so any component not yet migrated still renders */
+  --color-bg: var(--paper);
+  --color-surface: var(--paper-raised);
+  --color-surface-alt: var(--paper-sunk);
+  --color-border: var(--rule);
+  --color-text: var(--ink);
+  --color-text-secondary: var(--ink-soft);
+  --color-text-muted: var(--ink-faint);
+  --color-primary: var(--stamp);
+  --color-primary-dark: var(--stamp-deep);
+  --color-tech: var(--ink);
+  --font-sans: var(--font-body);
+
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --paper: #15181a;
+  --paper-raised: #1c2023;
+  --paper-sunk: #23282b;
+
+  --ink: #e4e7e5;
+  --ink-soft: #a3aaa6;
+  --ink-faint: #767d79;
+
+  --rule: #2a3033;
+  --rule-strong: #3d4548;
+
+  --stamp: #8aa6e0;
+  --stamp-deep: #a8bdea;
+  --stamp-wash: rgba(138, 166, 224, 0.12);
+
+  --live: #d9a441;
+
+  color-scheme: dark;
+    --moon: #fff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-variant-numeric: tabular-nums;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--stamp);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--stamp);
+  outline-offset: 3px;
+}
+
+/* ── Shared section scaffolding ─────────────────────────────── */
+
+.sheet {
+  padding: 4.5rem var(--gutter);
+  border-top: 1px solid var(--rule);
+}
+
+.sheet__mark {
+  display: block;
+  margin: 0 0 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--stamp);
+}
+
+.sheet__title {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+}
+
+.sheet__lede {
+  margin: 0.9rem 0 0;
+  max-width: 54ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* Single orchestrated entrance, hero only */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+@keyframes circle-reveal {
+  from {
+    clip-path: circle(0% at var(--x) var(--y));
+  }
+  to {
+    clip-path: circle(150% at var(--x) var(--y));
+  }
+}
+
+::view-transition-new(root) {
+  animation: circle-reveal 0.5s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --gutter: 1.5rem;
+  }
+  .sheet {
+    padding: 3.25rem var(--gutter);
+  }
+}
