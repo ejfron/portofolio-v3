@@ -12,7 +12,7 @@ const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
 }>()
 
-// Put your resume PDF at: public/resume/Edgar_Jugado_Resume.pdf
+
 const resumeUrl = '/resume/Edgar_Jugado_Resume.pdf'
 const resumeFileName = 'Edgar_Jugado_Resume.pdf'
 

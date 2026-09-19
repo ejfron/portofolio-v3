@@ -67,11 +67,7 @@ onMounted(() => {
   z-index: 950;
 }
 
-/*
- * Was width: 85% with a left margin, which left a ragged empty gutter on the
- * right at every width. The content column now fills what the rail leaves and
- * caps itself with a max-width so the measure stays readable on wide screens.
- */
+
 .shell__content {
   position: relative;
   z-index: 1;

@@ -83,6 +83,29 @@ export const projects: Project[] = [
     ProjectAvail: 'Available'
   },
   {
+    id: 'Receipt8',
+    title: 'Receipt8',
+    subtitle: 'Custom Receipt Generator',
+    subtitleColor: '#12B76A',
+    description: ' A web application for developers to generate custom receipt with various techstacks they want to use, with live preview and copy functionality.',
+   image: '/images/projects/6E415932-2FAC-4114-A33C-BFA74FF7E530.png',
+    features: [
+      'Live Preview while editing',
+      'One-click Copy Functionality',
+      'Customizable Templates',
+      'Various Techstacks Support',
+
+    ],
+    tags: ['Vue.js', 'PHP', 'TypeScript', 'Pinia'],
+    icon: 'Code2',
+    iconBg: '#E7F7EF',
+    iconColor: '#12B76A',
+    github: 'https://github.com/ejfron/Receipt8',
+    demo: 'https://receipt8-weld.vercel.app',
+    detailsUrl: '/projects/receipt8',
+    ProjectAvail: 'Available'
+  },
+  {
     id: 'portfolio-website',
     title: 'Portfolio Website',
     subtitle: 'Minimal Portfolio',
@@ -101,7 +124,7 @@ export const projects: Project[] = [
     icon: 'Code2',
     iconBg: '#E7F7EF',
     iconColor: '#12B76A',
-    github: 'https://github.com/',
+    github: 'https://github.com/ejfron/portofolio-v3',
     demo: '',
     detailsUrl: '/projects/Portfolio-Website',
         ProjectAvail: 'Your in the right link'
